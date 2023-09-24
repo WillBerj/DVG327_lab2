@@ -17,13 +17,26 @@
       <h2 class="section-heading">Apply now to live here</h2>
       <form [formGroup]="applyForm" (submit)="submitApplication()">
         <label for="first-name">First Name</label>
-        <input id="first-name" type="text" formControlName="firstName">
+<input id="first-name" type="text" formControlName="firstName">
+<div *ngIf="(applyForm.get('firstName')?.hasError('required') && applyForm.get('firstName')?.touched) || (submitClicked && applyForm.get('firstName')?.hasError('required'))" class="error-message">
+  First Name is required.
+</div>
 
-        <label for="last-name">Last Name</label>
-        <input id="last-name" type="text" formControlName="lastName">
+<label for="last-name">Last Name</label>
+<input id="last-name" type="text" formControlName="lastName">
+<div *ngIf="(applyForm.get('lastName')?.hasError('required') && applyForm.get('lastName')?.touched) || (submitClicked && applyForm.get('lastName')?.hasError('required'))" class="error-message">
+  Last Name is required.
+</div>
 
-        <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email">
+<label for="email">Email</label>
+<input id="email" type="email" formControlName="email">
+<div *ngIf="(applyForm.get('email')?.hasError('required') && applyForm.get('email')?.touched) || (submitClicked && applyForm.get('email')?.hasError('required'))" class="error-message">
+  Email is required.
+</div>
+<div *ngIf="(applyForm.get('email')?.hasError('email') && applyForm.get('email')?.touched) || (submitClicked && applyForm.get('email')?.hasError('email'))" class="error-message">
+  Please enter valid email.
+</div>
+
         <button type="submit" class="primary">Apply now</button>
       </form>
     </section>
